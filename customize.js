@@ -243,8 +243,13 @@
     if (!footer || footer.dataset.footerReady) return;
 
     const logo = footer.querySelector('.info_item .logo');
+    const qrCode = footer.querySelector('.wx img');
     const info = footer.querySelectorAll('.info_item p');
     if (logo) logo.src = '/assets/logo-KhLelugS.png?v=20260905-2';
+    if (qrCode) {
+      qrCode.src = '/assets/contact-qr.jpg?v=20260905-1';
+      qrCode.alt = '联系二维码';
+    }
     if (info[0]) info[0].textContent = '地址：济南市市中区中博领创时代中心500米路南';
     if (info[1]) info[1].textContent = '电话：';
     if (info[2]) info[2].textContent = '邮箱：';
