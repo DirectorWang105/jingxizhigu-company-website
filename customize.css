@@ -1,0 +1,201 @@
+.header .logo img {
+  width: 85px !important;
+  height: auto !important;
+}
+
+.footer_container .info_item .logo {
+  width: 90px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+.footer_container .info_item:has(.logo) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  margin-left: -17px !important;
+}
+
+.footer_container .info_item:has(.logo) span {
+  color: #f2f3f5 !important;
+  font-family: AlibabaPuHuiTi-2-85-Bold, sans-serif !important;
+  font-size: 22px !important;
+  line-height: 1.3 !important;
+  margin-left: -12px !important;
+  white-space: nowrap;
+}
+
+/* 首页首屏铺满浏览器宽度，去掉外层版心造成的左右留白 */
+.main {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+}
+
+.main .module_container {
+  width: 100% !important;
+}
+
+/* 删除“做”后保持第二行从“您的专属服务商”开始 */
+.module_container .content h1 {
+  max-width: 960px !important;
+}
+
+/* 使用原图完整比例，不裁切上下内容 */
+.module_container[data-v-6d5397db] {
+  background-size: 100% 100% !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+}
+
+.header .logo h1 {
+  margin-left: -2px !important;
+  font-size: 0 !important;
+}
+
+.header .logo h1::after {
+  content: '济南智链纵横人工智能有限公司';
+  font-family: AlibabaPuHuiTi-2-85-Bold, sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.customer .marquee .item {
+  min-width: 240px !important;
+  min-height: 84px !important;
+  background: #fff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(37, 76, 150, 0.08) !important;
+  padding: 20px 28px !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer .marquee {
+  display: flex !important;
+  flex-direction: row !important;
+  overflow: hidden !important;
+}
+
+.customer .marquee__group {
+  gap: 20px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  flex-shrink: 0 !important;
+  animation: text-projects-scroll 36s linear infinite !important;
+}
+
+.customer .marquee .label {
+  color: #1e222a !important;
+  font-size: 17px !important;
+  white-space: nowrap;
+}
+
+.introduction_item.video_wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.business-prospect-label {
+  color: #1e222a;
+  text-align: center;
+  font-family: AlibabaPuHuiTi-2-85-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.core-advantages-section .card_list > [class*='col-lg-3'] {
+  flex: 0 0 20% !important;
+  max-width: 20% !important;
+}
+
+@media (max-width: 1200px) {
+  .case-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .core-advantages-section .card_list > [class*='col-lg-3'] {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .core-advantages-section .card_list > [class*='col-lg-3'] {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.case-marquee {
+  display: flex;
+  overflow: hidden;
+  gap: 16px;
+}
+
+.case-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 16px;
+  width: max-content;
+  animation: case-cards-scroll 48s linear infinite;
+}
+
+.case-card {
+  flex: 0 0 420px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(37, 76, 150, 0.1);
+}
+
+.case-card > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.case-card__body {
+  padding: 20px 22px 24px;
+}
+
+.case-card__body h2 {
+  margin: 0 0 10px;
+  color: #1e222a;
+  font-family: AlibabaPuHuiTi-2-75-SemiBold, sans-serif;
+  font-size: 20px;
+}
+
+.case-card__body p {
+  margin: 0;
+  color: #5f6878;
+  font-family: AlibabaPuHuiTi-2-55-Regular, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+@media (max-width: 576px) {
+  .case-card {
+    flex-basis: min(82vw, 420px);
+  }
+}
+
+@keyframes case-cards-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 16px)); }
+}
+
+@keyframes text-projects-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - 20px)); }
+}
