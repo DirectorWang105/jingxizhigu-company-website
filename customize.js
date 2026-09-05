@@ -2,6 +2,10 @@
   const companyName = '济南智链纵横人工智能有限公司';
 
   function updateCompanyName() {
+    document.querySelectorAll('.header .logo img').forEach((logo) => {
+      logo.src = '/assets/logo-KhLelugS.png?v=20260905-2';
+      logo.alt = companyName;
+    });
     document.querySelectorAll('.header .logo h1').forEach((title) => {
       if (title.textContent !== companyName) title.textContent = companyName;
     });
@@ -240,7 +244,7 @@
 
     const logo = footer.querySelector('.info_item .logo');
     const info = footer.querySelectorAll('.info_item p');
-    if (logo) logo.src = '/assets/logo-KhLelugS.png?v=20260904-3';
+    if (logo) logo.src = '/assets/logo-KhLelugS.png?v=20260905-2';
     if (info[0]) info[0].textContent = '地址：济南市市中区中博领创时代中心500米路南';
     if (info[1]) info[1].textContent = '电话：';
     if (info[2]) info[2].textContent = '邮箱：';
