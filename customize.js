@@ -247,6 +247,88 @@
     footer.dataset.footerReady = 'true';
   }
 
+  function replaceIndustryNews() {
+    const heading = Array.from(document.querySelectorAll('.module_container h1')).find(
+      (item) => ['重大事件', '行业新闻'].includes(item.textContent.trim()),
+    );
+    const section = heading && heading.closest('.module_container');
+    if (!heading || !section || section.dataset.newsReady) return;
+
+    heading.textContent = '行业新闻';
+    const cover = section.querySelector('.first_new img');
+    if (cover) {
+      cover.src = '/assets/ai-industry-news.png?v=20260905-1';
+      cover.alt = 'AI行业发展与产业创新';
+    }
+
+    const news = [
+      {
+        title: '从信息社会迈向智能社会',
+        date: '2020-02-18',
+        url: 'http://it.people.com.cn/GB/n1/2020/0218/c1009-31591745.html',
+      },
+      {
+        title: '中外嘉宾热议：人工智能如何成为亚太发展新引擎',
+        date: '2026-09-04',
+        url: 'http://m.chinanews.com/wap/detail/zw/ydyl/2026/09-04/10690050.shtml',
+      },
+      {
+        title: '从“会说”到“可信”，AI产业化正在跨越什么？',
+        date: '2026-08-29',
+        url: 'http://fj.people.com.cn/n2/2026/0829/c181466-41681037.html',
+      },
+      {
+        title: '北京亦庄发布“AI人才八条” 为原生创业者打开新通道',
+        date: '2026-08-18',
+        url: 'https://baijiahao.baidu.com/s?id=1873869261200715449&wfr=baike',
+      },
+      {
+        title: '北京经开区：支持人工智能原生人才发展',
+        date: '2026-09-01',
+        url: 'http://district.ce.cn/newarea/roll/202609/t20260901_3185512.shtml',
+      },
+      {
+        title: '冠军背后的“圈”力量',
+        date: '2026-09-04',
+        url: 'https://xh.xhby.net/pc/con/202609/04/content_1586943.html',
+      },
+    ];
+
+    const setDate = (item, value) => {
+      const [year, month, day] = value.split('-');
+      const dayNode = item.querySelector('.date .day');
+      const monthNode = item.querySelector('.date .year_month');
+      if (dayNode) dayNode.textContent = day;
+      if (monthNode) monthNode.textContent = `${year}-${month}`;
+    };
+    const makeClickable = (item, article) => {
+      if (!item) return;
+      setDate(item, article.date);
+      const title = item.querySelector('.new_content h2, .content h2');
+      const summary = item.querySelector('.new_content p, .content p');
+      if (title) title.textContent = article.title;
+      if (summary) summary.textContent = '';
+      item.style.cursor = 'pointer';
+      item.setAttribute('role', 'link');
+      item.setAttribute('tabindex', '0');
+      item.onclick = () => window.open(article.url, '_blank', 'noopener');
+      item.onkeydown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          item.click();
+        }
+      };
+    };
+
+    const featured = section.querySelector('.first_new');
+    makeClickable(featured, news[0]);
+    const listItems = Array.from(section.querySelectorAll('.col-lg-6 .list_item'))
+      .filter((item) => !item.classList.contains('first_new'));
+    listItems.slice(0, news.length - 1).forEach((item, index) => makeClickable(item, news[index + 1]));
+
+    section.dataset.newsReady = 'true';
+  }
+
   updateCompanyName();
   replaceScrollingProjects();
   replaceCompanyIntro();
@@ -258,6 +340,7 @@
   replaceCases();
   hideComputeServices();
   replaceFooterInfo();
+  replaceIndustryNews();
   new MutationObserver(updateCompanyName).observe(document.documentElement, {
     childList: true,
     subtree: true,
@@ -299,6 +382,10 @@
     subtree: true,
   });
   new MutationObserver(replaceFooterInfo).observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+  new MutationObserver(replaceIndustryNews).observe(document.documentElement, {
     childList: true,
     subtree: true,
   });
